@@ -110,4 +110,9 @@ public class PlayerController : MonoBehaviour
             gameManager.setGameOverStatus(true);
         }
     }
+
+    public int GetHealth()
+    {
+        return health;
+    }
 }
