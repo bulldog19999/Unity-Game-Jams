@@ -11,18 +11,20 @@ public class PlayerController : MonoBehaviour
     private GameManager gameManager;
     
     private float speed = 5.0f;
-    private float nextDamageTick = 0f;
+    private float nextDamageTick = 0f;  //used as a time interval for when a player takes damage. Uses Time.time
     private float verticalInput;
     private float horizontalInput;
     private int health = 50;
-    private bool isJumping = false;
-    private bool isDead = false;
+    private bool isJumping = false;      //prevents double jumps
+    private bool isDead = false;         //controls victory conditions
+    private bool isWet = true;           //enables and disables damage
     private Vector3 jumpForce = new Vector3(0, 5.5f, 0);
 
-    public bool isWet = true;
+    
     // Start is called before the first frame update
     void Awake()
     {
+        //Initalize references
         playerRb = GetComponent<Rigidbody>();
         umbrella = GameObject.Find("Umbrella").GetComponent<Umbrella>();
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
             playerRb.transform.Translate(Vector3.forward * speed * verticalInput * Time.deltaTime);
             playerRb.transform.Translate(Vector3.right * (speed * 0.8f) * horizontalInput * Time.deltaTime);
 
+            //controls damage
             if(isWet)
             {
                 takeDamage(5, 1.5f);
@@ -63,8 +66,7 @@ public class PlayerController : MonoBehaviour
 
     public void takeDamage(int damage, float damageInterval)
     {
-        //uses Time.time to control how often damage is applied, for testing i want it to be every 1.5 seconds
-        //updated code to damage umbrella if it is not destroyed
+        //uses Time.time to control how often damage is applied
         if((health > 0 && Time.time > nextDamageTick) && umbrella.getDestroyedStatus())
         {
             nextDamageTick = Time.time + (damageInterval * 0.5f);

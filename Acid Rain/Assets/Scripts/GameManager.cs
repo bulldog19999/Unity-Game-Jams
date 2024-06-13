@@ -9,12 +9,14 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //initalize player reference
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //gameOver is triggered either by reaching the goal or dying.
         if(gameOver && pc.getIsDead())
         {
             Debug.Log("You Lose");

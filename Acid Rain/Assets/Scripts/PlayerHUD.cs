@@ -21,6 +21,8 @@ public class PlayerHUD : MonoBehaviour
     {
         playerHealthText.text = "Health: " + pc.GetHealth();
         
+        //Umbrella text is used for the player, it is important that the text alerts players
+        //because they take increased damage without one
         if(umbrella.getDestroyedStatus())
         {
             umbrellaStatusText.text = "Umbrella DESTROYED!";

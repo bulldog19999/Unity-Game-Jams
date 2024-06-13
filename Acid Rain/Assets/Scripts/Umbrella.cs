@@ -11,6 +11,7 @@ public class Umbrella : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Deactivate the umbrella object when it's health reaches 0
         if (currentHealth <= 0) 
         {
             Debug.Log("Umbrella Destroyed");
@@ -19,6 +20,7 @@ public class Umbrella : MonoBehaviour
         }
     }
 
+    //So far not used, intended to have pickups that restores umbrella's health and reactivates it.
     public void increaseUHealth(int value)
     {
         currentHealth += value;
@@ -28,7 +30,7 @@ public class Umbrella : MonoBehaviour
     {
         currentHealth -= value;
     }
-
+    //also unused code, intended as a way to reset umbrella for level switches and testing
     public void resetUmbrella()
     {
         isDestroyed = false;
