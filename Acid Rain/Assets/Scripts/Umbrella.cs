@@ -6,7 +6,7 @@ public class Umbrella : MonoBehaviour
 {
     private static int baseHealth = 20;
     private int currentHealth = baseHealth;
-    public bool isDestroyed = false;
+    private bool isDestroyed = false;
 
     // Update is called once per frame
     void Update()
